@@ -1,3 +1,11 @@
+# Makefile output
+simplekvpcache
+
+# eclipse project stuff
+.cproject
+.project
+.settings/
+
 # Object files
 *.o
 *.ko
