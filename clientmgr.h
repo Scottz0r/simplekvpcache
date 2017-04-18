@@ -16,27 +16,31 @@
 #define RESPONSE_DATA 2
 #define RESPONSE_ERR 3
 
+typedef struct header_in {
+    uint16_t operation;
+    uint16_t keyLength;
+    uint16_t messageSize;
+} header_in;
+
+typedef struct header_out {
+    uint16_t responseCode;
+    uint16_t messageSize;
+} header_out;
+
+typedef struct strObject {
+    char* value;
+    size_t size;
+} strObject;
+
 typedef struct client {
     int fd;
+    header_out headerOut;
     int buffpos;
+    int buffsize;
     char buff[REPLY_CHUNK_BYTES];
 
 } client;
 
-typedef struct message {
-    uint16_t operation;
-    uint16_t keylen;
-    uint16_t msgSize;
-    char* key;
-    char* body;
-} message;
-
-typedef struct inputBuffer {
-    char buffer[BUFFER_SIZE];
-    int bufferPos;
-    int bufferLen;
-} inputBuffer;
-
-void clientmgrHandleClient(client* cli, dict* d);
+int clientmgrHandleClient(client* cli, dict* d);
 
 #endif

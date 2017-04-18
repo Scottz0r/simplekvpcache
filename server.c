@@ -44,7 +44,7 @@ int connectServer(server* serv){
 
     servAddr.sin_family = AF_INET;
     servAddr.sin_port = htons(serv->port);
-    servAddr.sin_addr.s_addr =INADDR_ANY;
+    servAddr.sin_addr.s_addr = INADDR_ANY;
 
     bindRes = bind(socketfd, (struct sockaddr*) &servAddr, sizeof(servAddr));
     if(bindRes < 0){

@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-I. -g
 
 all: server
 
-server: server.c dict.c clientmgr.c
-	$(CC) -o simplekvpcache server.c dict.c clientmgr.c $(CFLAGS)
+server: server.c dict.c clientmgr.c networking.c
+	$(CC) -o simplekvpcache server.c dict.c clientmgr.c networking.c $(CFLAGS)
