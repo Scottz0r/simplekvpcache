@@ -169,7 +169,9 @@ void getData(int sockfd){
     printf("Response code received: %i\n", resHeader.responseCode);
     printf("Message size received: %i\n", resHeader.messageSize);
 
-    bodyBuffer = malloc(resHeader.messageSize);
+    //Making sure to null terminate the bytes received from the server.
+    bodyBuffer = malloc(resHeader.messageSize + 1);
+    memset(bodyBuffer, 0, resHeader.messageSize + 1);
     n = read(sockfd, bodyBuffer, resHeader.messageSize);
 
     printf("Message is: %s\n", bodyBuffer);
