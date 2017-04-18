@@ -1,5 +1,6 @@
 # Makefile output
 simplekvpcache
+testclient
 
 # eclipse project stuff
 .cproject

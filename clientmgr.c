@@ -82,8 +82,13 @@ static int _readOperation(client* cli, dict* d, header_in* inputHeader){
     } else {
         content = dictSearch(d, key.value);
         messageSize = strlen(content);
+
         memcpy(cli->buff + cli->buffpos, content, messageSize);
         cli->buffpos += messageSize;
+
+        cli->headerOut.messageSize = messageSize;
+        cli->headerOut.responseCode = RESPONSE_DATA;
+
         writeRes = networkWriteToClient(cli);
         success = writeRes || C_OK;
     }

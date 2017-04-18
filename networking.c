@@ -15,7 +15,7 @@ int networkWriteToClient(client* cli){
     int n;
     size_t headerBuffPos;
     uint16_t ntResponseCode, ntMessageSize;
-    char headerBuffer[sizeof(header_out)];
+    char headerBuffer[4];
 
     //Prepare and write the header.
     ntResponseCode = htons(cli->headerOut.responseCode);
